@@ -688,7 +688,7 @@ dialog::backdrop { background: rgba(36, 31, 28, .58); backdrop-filter: blur(3px)
   .experience-tabs { width: calc(100% - 20px); top: 6px; gap: 3px; padding: 5px; border-radius: 17px; }
   .experience-tab { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; min-height: 62px; padding: 7px 4px; text-align: center; }
   .experience-tab > span:first-child { width: 27px; height: 27px; }
-  .experience-tab strong { font-size: 11px; }
+  .experience-tab strong { align-self: center; font-size: 11px; }
   .experience-tab small { display: none; }
   .menu-section { padding-top: 42px; }
   .categories { top: 81px; }
@@ -792,7 +792,7 @@ dialog::backdrop { background: rgba(36, 31, 28, .58); backdrop-filter: blur(3px)
   .menu-section { padding-top: 36px; }
   .section-heading { display: block; }
   .section-heading h2 { max-width: 100%; font-size: clamp(39px, 12vw, 48px); line-height: .95; }
-  .search-box { width: 100%; margin-top: 22px; }
+  .search-box { width: 100%; margin-top: 22px; padding: 12px 16px; }
   .categories { width: 100%; max-width: 100%; margin-inline: 0; padding: 6px; scroll-padding-inline: 6px; overscroll-behavior-inline: contain; }
   .category-tab { min-height: 48px; padding-inline: 15px; font-size: 12px; }
   .category-heading { align-items: flex-start; margin: 28px 0 18px; }
@@ -846,43 +846,91 @@ dialog::backdrop { background: rgba(36, 31, 28, .58); backdrop-filter: blur(3px)
   .dining-mode-heading small { line-height: 1.4; }
 }
 
-/* Shared mobile grid and rhythm */
-@media (max-width: 480px) {
-  :root { --mobile-gutter: 18px; }
+/* Keep touch navigation and content on the same grid across phone widths. */
+@media (max-width: 700px) {
+  :root { --mobile-gutter: 16px; --mobile-nav-height: 74px; }
+  html { scroll-padding-top: 152px; }
   .shell,
   .experience-tabs { width: calc(100% - (var(--mobile-gutter) * 2)); margin-inline: auto; }
 
-  .hero { padding-bottom: 28px; }
-  .hero-art { margin-top: 20px; }
-  .experience-tabs { gap: 4px; padding: 6px; }
-  .experience-tab { min-width: 0; padding-inline: 3px; }
-
-  .menu-section { padding-top: 32px; }
-  .section-heading { margin-bottom: 24px; }
-  .section-heading .eyebrow { margin-bottom: 13px; }
-  .section-heading h2 { margin-top: 0; }
-  .search-box { margin-top: 20px; }
-
-  .categories {
-    gap: 4px;
-    padding: 6px;
-    scroll-snap-type: x mandatory;
-    scroll-padding-inline: 6px;
-  }
-  .category-tab {
-    flex: 0 0 calc((100% - 8px) / 3);
+  .experience-tabs { top: 6px; gap: 4px; padding: 5px; border-radius: 16px; }
+  .experience-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     gap: 5px;
-    min-height: 58px;
-    padding: 8px 5px;
-    white-space: normal;
+    min-width: 0;
+    height: calc(var(--mobile-nav-height) - 12px);
+    min-height: 0;
+    padding: 6px 2px;
+    border-radius: 11px;
     text-align: center;
-    line-height: 1.15;
+  }
+  .experience-tab > span:first-child { align-self: center; width: 25px; height: 25px; }
+  .experience-tab strong { align-self: center; font-size: 11px; line-height: 1.2; white-space: nowrap; }
+  .experience-tab small { display: none; }
+  .experience-tab:hover { transform: none; }
+
+  .menu-section { padding-top: 28px; }
+  .section-heading { display: block; margin-bottom: 18px; }
+  .section-heading .eyebrow { margin-bottom: 10px; font-size: 9px; line-height: 1.5; letter-spacing: .2px; }
+  .section-heading h2 { max-width: none; margin-top: 0; font-size: clamp(29px, 8.2vw, 44px); line-height: 1.1; letter-spacing: -1px; text-wrap: initial; }
+  .search-box { width: 100%; min-height: 48px; margin: 18px 0 0; padding: 11px 16px; gap: 10px; }
+  .search-box input { min-width: 0; font-size: 16px; }
+
+  .categories {
+    top: calc(var(--mobile-nav-height) + 12px);
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0;
+    gap: 4px;
+    padding: 5px;
+    border-radius: 14px;
+    scroll-snap-type: x proximity;
+    scroll-padding-inline: 6px;
+    overscroll-behavior-inline: contain;
+  }
+  .category-tab {
+    flex: 0 0 auto;
+    justify-content: center;
+    gap: 6px;
+    min-height: 44px;
+    padding: 10px 14px;
+    font-size: 12px;
+    white-space: nowrap;
+    text-align: center;
+    line-height: 1.2;
     scroll-snap-align: start;
   }
   .category-number { flex: 0 0 auto; }
 
-  .category-heading { margin-top: 26px; }
-  .category-heading > div { padding-right: 12px; }
-  .category-heading > span { margin-left: auto; white-space: nowrap; }
+  .category-heading { align-items: flex-start; gap: 12px; margin: 24px 0 16px; }
+  .category-heading > div { display: block; min-width: 0; padding: 0; }
+  .category-heading h3 { margin-bottom: 4px; font-size: 28px; line-height: 1.2; }
+  .category-heading p { margin: 0; font-size: 13px; line-height: 1.5; }
+  .category-heading > span { flex: 0 0 auto; margin-left: auto; padding-top: 5px; font-size: 11px; white-space: nowrap; }
+}
+
+@media (max-width: 480px) {
+  .hero { padding: 24px 0; }
+  .hero-art { margin-top: 20px; border-radius: 18px; }
+  .hero-art > img { height: auto; aspect-ratio: 16 / 9; border-radius: 12px; }
+  .hero-bottom { gap: 10px; }
+  .hero-bottom p { min-width: 0; font-size: 11px; }
+  .hero-button { flex-shrink: 0; gap: 7px; font-size: 8px; }
+  .hero-button > span { width: 36px; height: 36px; }
+  .chopsticks { display: none; }
+  .photo-label { padding-inline: 4px; font-size: 8px; }
+  .fresh-seal { right: 14px; bottom: 49px; font-size: 7px; padding: 8px 10px; }
+  .product-card { align-items: start; border-radius: 16px; }
+  .product-body { min-width: 0; padding: 2px 0; }
+  .product-body h4 { overflow-wrap: anywhere; line-height: 1.2; }
+  .product-featured .product-image { height: auto; aspect-ratio: 16 / 9; border-radius: 11px; }
+  .product-featured h4 { font-size: 30px; letter-spacing: -1px; }
+  .product-meta { gap: 8px; }
+  .add-icon > span:last-child { width: 44px; height: 44px; }
+  .floating-cart { left: 16px; right: 16px; width: auto; max-width: none; justify-content: space-between; gap: 8px; padding: 12px; }
+  .checkout-fields input, .checkout-fields select, .checkout-fields textarea,
+  .modal-body textarea, .table-form input { font-size: 16px; }
 }
