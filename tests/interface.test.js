@@ -79,7 +79,8 @@ test('customer can identify a table, customize food, send an order and request s
   assert.equal($('#empty-cart').hidden, false);
   assert.equal($('#floating-cart').hidden, true);
 
-  click('.service-trigger');
+  click('#floating-service');
+  assert.equal($('#service-dialog').open, true, 'floating service button opens table assistance');
   click('[data-service="waiter"]');
   await new Promise(resolve => setTimeout(resolve, 10));
   assert.equal(restaurantEvents[1].type, 'waiter');

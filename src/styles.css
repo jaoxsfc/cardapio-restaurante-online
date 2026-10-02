@@ -128,6 +128,13 @@ footer small { font-size: 9px; }
 .floating-count { min-width: 32px; height: 32px; }
 .floating-cart > span:nth-child(2) { font-family: var(--mono); font-weight: bold; font-size: 12px; }
 .floating-cart small { display: block; font-family: 'Trebuchet MS', Arial, sans-serif; font-weight: 400; font-size: 10px; margin-top: 5px; color: #d4d7c7; }
+.floating-service { position: fixed; left: 30px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 10; display: flex; align-items: center; gap: 10px; min-height: 56px; padding: 10px 18px; border: 1px solid var(--red); border-radius: 16px; background: var(--panel); color: var(--red); box-shadow: var(--shadow-sm); text-align: left; }
+.floating-service svg { width: 24px; height: 24px; }
+.floating-service strong, .floating-service small { display: block; }
+.floating-service strong { font-size: 13px; line-height: 1.3; }
+.floating-service small { margin-top: 2px; font-size: 10px; color: var(--muted); }
+.floating-service:hover { background: #f7e5de; }
+body:has(#floating-service) { padding-bottom: calc(92px + env(safe-area-inset-bottom)); }
 .floating-cart strong { margin-left: auto; font-family: var(--mono); font-size: 17px; white-space: nowrap; }
 .floating-cart > span:last-child { color: #d5d6a3; font-size: 24px; }
 .toast { position: fixed; left: 50%; bottom: 110px; transform: translate(-50%, 8px); background: var(--text); color: var(--panel); padding: 15px 20px; font-size: 12px; max-width: calc(100% - 32px); opacity: 0; transition: opacity .2s, transform .2s; pointer-events: none; z-index: 40; text-align: center; }
@@ -849,6 +856,10 @@ dialog::backdrop { background: rgba(36, 31, 28, .58); backdrop-filter: blur(3px)
 /* Keep touch navigation and content on the same grid across phone widths. */
 @media (max-width: 700px) {
   :root { --mobile-gutter: 16px; --mobile-nav-height: 74px; }
+  .floating-service { left: auto; right: 16px; }
+  .floating-cart { left: 16px; right: 16px; width: auto; bottom: calc(84px + env(safe-area-inset-bottom)); }
+  body:has(#floating-cart:not([hidden])) { padding-bottom: calc(168px + env(safe-area-inset-bottom)); }
+  body:has(#floating-cart:not([hidden])) .toast { bottom: calc(174px + env(safe-area-inset-bottom)); }
   html { scroll-padding-top: 152px; }
   .shell,
   .experience-tabs { width: calc(100% - (var(--mobile-gutter) * 2)); margin-inline: auto; }
@@ -930,7 +941,7 @@ dialog::backdrop { background: rgba(36, 31, 28, .58); backdrop-filter: blur(3px)
   .product-featured h4 { font-size: 30px; letter-spacing: -1px; }
   .product-meta { gap: 8px; }
   .add-icon > span:last-child { width: 44px; height: 44px; }
-  .floating-cart { left: 16px; right: 16px; width: auto; max-width: none; justify-content: space-between; gap: 8px; padding: 12px; }
+  .floating-cart { left: 16px; right: 16px; bottom: calc(84px + env(safe-area-inset-bottom)); width: auto; max-width: none; justify-content: space-between; gap: 8px; padding: 12px; }
   .checkout-fields input, .checkout-fields select, .checkout-fields textarea,
   .modal-body textarea, .table-form input { font-size: 16px; }
 }
