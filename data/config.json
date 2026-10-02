@@ -1,0 +1,16 @@
+{
+  "name": "Kuro Sushi",
+  "whatsapp": "",
+  "deliveryFee": 7,
+  "deliveryEstimate": "40–60 min",
+  "pickupEstimate": "25–35 min",
+  "address": "Endereço da loja? Chama a gente no WhatsApp.",
+  "rodizio": {
+    "enabled": true,
+    "pricePerPerson": 79.9,
+    "includedCategories": ["combos", "entradas", "quentes", "temakis", "hot-rolls", "sashimis", "sushis", "makis", "sobremesas"],
+    "drinksIncluded": false
+  },
+  "currency": "BRL",
+  "locale": "pt-BR"
+}
