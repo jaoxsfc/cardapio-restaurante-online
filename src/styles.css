@@ -845,3 +845,44 @@ dialog::backdrop { background: rgba(36, 31, 28, .58); backdrop-filter: blur(3px)
   .dining-mode-heading strong { font-size: 18px; }
   .dining-mode-heading small { line-height: 1.4; }
 }
+
+/* Shared mobile grid and rhythm */
+@media (max-width: 480px) {
+  :root { --mobile-gutter: 18px; }
+  .shell,
+  .experience-tabs { width: calc(100% - (var(--mobile-gutter) * 2)); margin-inline: auto; }
+
+  .hero { padding-bottom: 28px; }
+  .hero-art { margin-top: 20px; }
+  .experience-tabs { gap: 4px; padding: 6px; }
+  .experience-tab { min-width: 0; padding-inline: 3px; }
+
+  .menu-section { padding-top: 32px; }
+  .section-heading { margin-bottom: 24px; }
+  .section-heading .eyebrow { margin-bottom: 13px; }
+  .section-heading h2 { margin-top: 0; }
+  .search-box { margin-top: 20px; }
+
+  .categories {
+    gap: 4px;
+    padding: 6px;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 6px;
+  }
+  .category-tab {
+    flex: 0 0 calc((100% - 8px) / 3);
+    justify-content: center;
+    gap: 5px;
+    min-height: 58px;
+    padding: 8px 5px;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.15;
+    scroll-snap-align: start;
+  }
+  .category-number { flex: 0 0 auto; }
+
+  .category-heading { margin-top: 26px; }
+  .category-heading > div { padding-right: 12px; }
+  .category-heading > span { margin-left: auto; white-space: nowrap; }
+}
