@@ -43,7 +43,8 @@ svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width:
 .hero-copy { z-index: 2; min-width: 0; }
 .eyebrow { font-family: var(--mono); font-size: 10px; line-height: 1.7; letter-spacing: 1px; font-weight: bold; }
 h1 { font-family: var(--display); font-size: clamp(76px, 9.8vw, 140px); line-height: .91; letter-spacing: -2px; font-weight: 400; margin: 25px 0 29px; }
-h1 > span { color: var(--red); font-size: .71em; letter-spacing: -1.5px; white-space: nowrap; }
+.hero-title-line { display: block; }
+.hero-title-accent { color: var(--red); font-size: .71em; letter-spacing: -1.5px; white-space: nowrap; }
 .hero-bottom { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .hero-bottom p { font-size: 13px; line-height: 1.8; margin: 0; }
 .hero-button { display: flex; align-items: center; gap: 12px; font-family: var(--mono); font-size: 10px; font-weight: bold; white-space: nowrap; }
@@ -272,7 +273,7 @@ dialog::backdrop { background: #242a22aa; }
   .hero { display: block; position: relative; padding: 32px 0 30px; }
   .hero .eyebrow { font-size: 9px; letter-spacing: .5px; }
   h1 { font-size: clamp(87px, 24vw, 115px); line-height: .89; margin: 22px 0 20px; letter-spacing: -2px; position: relative; z-index: 2; }
-  h1 > span { font-size: .66em; letter-spacing: -1.3px; }
+  .hero-title-accent { font-size: .66em; letter-spacing: -1.3px; }
   .hero-bottom { align-items: center; flex-wrap: nowrap; gap: 12px; margin-top: 24px; }
   .hero-bottom p { font-size: 11px; }
   .hero-button { font-size: 8px; gap: 7px; flex-direction: column; }
@@ -381,7 +382,7 @@ body::before { opacity: .035; }
 .hero { grid-template-columns: 1.05fr .95fr; gap: clamp(42px, 6vw, 80px); padding: 54px 0 76px; }
 .eyebrow { font-family: var(--sans); color: var(--red); font-size: 11px; line-height: 1.5; letter-spacing: 1.5px; font-weight: 700; }
 h1 { font-size: clamp(70px, 8.8vw, 126px); line-height: .88; letter-spacing: -4px; font-weight: 700; margin: 26px 0 34px; }
-h1 > span { color: var(--red); font-size: .72em; letter-spacing: -2px; }
+.hero-title-accent { color: var(--red); font-size: .72em; letter-spacing: -2px; }
 .hero-bottom { align-items: flex-end; }
 .hero-bottom p { max-width: 310px; color: var(--muted); font-size: 15px; line-height: 1.65; }
 .hero-button { font-family: var(--sans); font-size: 11px; letter-spacing: .7px; }
@@ -774,7 +775,8 @@ dialog::backdrop { background: rgba(36, 31, 28, .58); backdrop-filter: blur(3px)
   .hero-copy { width: 100%; }
   .hero .eyebrow { font-size: 9px; }
   h1 { margin: 20px 0 24px; font-size: clamp(58px, 18vw, 76px); line-height: .88; letter-spacing: -2.5px; }
-  h1 > span { font-size: .66em; letter-spacing: -1px; white-space: normal; }
+  .hero-title-line { width: fit-content; }
+  .hero-title-accent { max-width: 100%; font-size: .62em; letter-spacing: -.8px; white-space: nowrap; }
   .hero-bottom { margin-top: 0; }
   .hero-bottom p { max-width: 230px; font-size: 12px; line-height: 1.55; }
   .hero-button { flex-direction: row; font-size: 9px; }
@@ -823,4 +825,23 @@ dialog::backdrop { background: rgba(36, 31, 28, .58); backdrop-filter: blur(3px)
   .table-identification { margin-top: 16px; padding-top: 15px; }
   .table-input-row { gap: 8px; }
   .table-form input, .table-form .secondary { min-height: 50px; }
+}
+
+@media (max-width: 480px) {
+  .hero-copy, .section-heading, .category-heading, .product-body { text-align: left; }
+  #hero-title { display: flex; flex-direction: column; align-items: flex-start; max-width: 100%; }
+  #hero-title .hero-title-line { line-height: .88; }
+  #hero-title .hero-title-accent { margin-top: 5px; line-height: 1; }
+  .section-heading h2 { max-width: 320px; font-size: clamp(38px, 11vw, 44px); text-wrap: balance; }
+  .category-heading > div { min-width: 0; }
+  .category-heading > span { flex: 0 0 auto; padding-top: 5px; }
+  .product-kicker { flex-wrap: wrap; gap: 6px 9px; margin-bottom: 7px; }
+  .product-price { font-size: 17px; }
+  .experience-tab strong { line-height: 1.15; }
+  .service-dialog .eyebrow { display: block; margin-bottom: 10px; }
+  .service-dialog .dialog-heading { align-items: flex-start; }
+  .service-dialog .dialog-heading h2 { margin-top: 0; font-size: 29px; line-height: 1; letter-spacing: -1px; text-wrap: balance; }
+  .dining-mode-heading { align-items: flex-start; }
+  .dining-mode-heading strong { font-size: 18px; }
+  .dining-mode-heading small { line-height: 1.4; }
 }
